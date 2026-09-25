@@ -1,0 +1,15 @@
+{
+  "graded_by": "the author",
+  "date": "2026-09-25",
+  "recorded_at": "2026-09-25 08:2x CDT, before the key was opened",
+  "raw": [
+    "pair 1: A=4.5 B=2 better=A creative=A",
+    "pair 2: A=1 B=3.5 better=B creative=B",
+    "pair 3: A=4 B=2 better=A creative=A",
+    "pair 4: A=3 B=4 better=A creative=A"
+  ],
+  "pair 1": {"A": {"coherence": 4.5}, "B": {"coherence": 2}, "better": "A", "creative": "A"},
+  "pair 2": {"A": {"coherence": 1}, "B": {"coherence": 3.5}, "better": "B", "creative": "B"},
+  "pair 3": {"A": {"coherence": 4}, "B": {"coherence": 2}, "better": "A", "creative": "A"},
+  "pair 4": {"A": {"coherence": 3}, "B": {"coherence": 4}, "better": "A", "creative": "A"}
+}

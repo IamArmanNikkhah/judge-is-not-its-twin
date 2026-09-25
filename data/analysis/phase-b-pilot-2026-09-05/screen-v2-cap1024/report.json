@@ -1,0 +1,39 @@
+{
+  "arm_gap": 0.0,
+  "code_sha256": "a006ff2786465cc22d1dfd865f01af8336e63a63a425f2caeaab4f20a98541e8",
+  "input_sha256": {
+    "data/runs/pb-pilot-ordinary-20260905/outputs.jsonl": "573e8b22a899680828ab1c046cc3a6cd654c6e3f79e2a88a50ab49f079ce614a",
+    "data/runs/pb-pilot-ordinary-topup-20260905/outputs.jsonl": "37c0d0aea094c7c082c99baf47b57e9a7d681bfb894a94ac56cc468c6307e3a7",
+    "data/runs/pb-pilot-unlikely-cap1024-20260906/outputs.jsonl": "51dc4be9479a200f6de3ba04b9c0d4f738e6be22b6523bb11eabe94a0a8f6922"
+  },
+  "kept": 97,
+  "max_ratio": 1.25,
+  "min_words": 100,
+  "pairs": 29,
+  "pairs_rejected_by_ratio": 19,
+  "per_arm": {
+    "ordinary": {
+      "excluded": 0,
+      "rate": 0.0,
+      "reasons": {},
+      "total": 49
+    },
+    "unlikely": {
+      "excluded": 0,
+      "rate": 0.0,
+      "reasons": {},
+      "total": 48
+    }
+  },
+  "records": 97,
+  "status": "MECHANICAL_SCREEN_ONLY_NOT_QUALITY_VALIDATED",
+  "tripwire": {
+    "threshold_arm": 0.1,
+    "threshold_gap": 0.05,
+    "tripped": false,
+    "verdict": "clear"
+  },
+  "unmatched_ids": [
+    "pb-pilot-ordinary-topup-20260905__ff-10__zephyr-dpo__s411k0"
+  ]
+}

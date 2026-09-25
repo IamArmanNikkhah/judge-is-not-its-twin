@@ -1,0 +1,12 @@
+{
+  "bootstrap_95": [
+    -0.09664999999999994,
+    0.03702068965517245
+  ],
+  "frac_unlikely_less_typical": 0.3793103448275862,
+  "manipulation_detected": false,
+  "mean_delta_nll": -0.03056965517241376,
+  "n_pairs": 29,
+  "reading": "positive delta = unlikely arm is LESS typical to the reader (the intended direction)",
+  "ref_tag": "olmo2-base"
+}

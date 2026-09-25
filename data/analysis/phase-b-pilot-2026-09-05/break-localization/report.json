@@ -1,0 +1,139 @@
+{
+  "stories": [
+    {
+      "label": "river (T=1.3, coherence 2)",
+      "item_id": "pb-pilot-decoding-sweep-20260906-t1.3__ff-12__zephyr-dpo__decoding__s411k1",
+      "story_mean_nll": 2.45308,
+      "sentence_median_nll": 2.429127739130435,
+      "marked": [
+        {
+          "mark": "How can it be missing from your map?",
+          "rank": 16,
+          "of": 16,
+          "top_quarter": false,
+          "mean_nll": 1.9180966666666666,
+          "n_tokens": 9
+        },
+        {
+          "mark": "the river must've gotten erased in the process",
+          "rank": 6,
+          "of": 16,
+          "top_quarter": false,
+          "mean_nll": 2.7669561904761903,
+          "n_tokens": 21
+        }
+      ],
+      "top3": [
+        {
+          "sentence": "The old map in Sarah's hands was worn and folded multiple times.",
+          "mean_nll": 3.5370271428571427,
+          "n_tokens": 14
+        },
+        {
+          "sentence": "I can confirm it myself.",
+          "mean_nll": 3.0810549999999997,
+          "n_tokens": 6
+        },
+        {
+          "sentence": "There was just one thing - a deep blue river with no name.",
+          "mean_nll": 2.964572857142857,
+          "n_tokens": 14
+        }
+      ]
+    },
+    {
+      "label": "inherited debt (natural, less predictable, coherence 1)",
+      "item_id": "pb-pilot-ordinary-20260905__ff-09__zephyr-dpo__s411k3",
+      "story_mean_nll": 1.75902,
+      "sentence_median_nll": 1.6934925996204933,
+      "marked": [
+        {
+          "mark": "had not just inherited clients; he had left her with their debts",
+          "rank": 4,
+          "of": 22,
+          "top_quarter": true,
+          "mean_nll": 2.325672222222222,
+          "n_tokens": 18
+        },
+        {
+          "mark": "she began to schedule cosmic surgeries for her grandfather's clients",
+          "rank": 13,
+          "of": 22,
+          "top_quarter": false,
+          "mean_nll": 1.621302962962963,
+          "n_tokens": 27
+        },
+        {
+          "mark": "She was shocked at how well these surgeries worked",
+          "rank": 9,
+          "of": 22,
+          "top_quarter": false,
+          "mean_nll": 1.8200684210526314,
+          "n_tokens": 19
+        }
+      ],
+      "top3": [
+        {
+          "sentence": "She knew she would receive some money, but she never expected a bill for over a thousand cosmic surgeries.",
+          "mean_nll": 2.8985880952380954,
+          "n_tokens": 21
+        },
+        {
+          "sentence": "Lily woke up to a knock on her door.",
+          "mean_nll": 2.677668181818182,
+          "n_tokens": 11
+        },
+        {
+          "sentence": "Cosmic surgery?",
+          "mean_nll": 2.4701375,
+          "n_tokens": 4
+        }
+      ]
+    },
+    {
+      "label": "stopped bells (natural, less predictable, coherence 2)",
+      "item_id": "pb-pilot-ordinary-20260905__ff-10__zephyr-dpo__s411k0",
+      "story_mean_nll": 1.64315,
+      "sentence_median_nll": 1.5766142727272727,
+      "marked": [
+        {
+          "mark": "She recognized it immediately - the clock from the town square",
+          "rank": 17,
+          "of": 42,
+          "top_quarter": false,
+          "mean_nll": 1.7347408333333334,
+          "n_tokens": 12
+        },
+        {
+          "mark": "etched into the clock's face",
+          "rank": 26,
+          "of": 42,
+          "top_quarter": false,
+          "mean_nll": 1.4915014285714285,
+          "n_tokens": 14
+        }
+      ],
+      "top3": [
+        {
+          "sentence": "The clock on the wall blinked 12:00 in neon red, its humming motor still.",
+          "mean_nll": 3.3513442105263156,
+          "n_tokens": 19
+        },
+        {
+          "sentence": "The streets below lay quiet.",
+          "mean_nll": 2.747723333333333,
+          "n_tokens": 6
+        },
+        {
+          "sentence": "The streets remained still, the city's heartbeat paused.",
+          "mean_nll": 2.6884318181818183,
+          "n_tokens": 11
+        }
+      ]
+    }
+  ],
+  "marks_sha256": "427725bcaec9bbf3e52e53dbb302f71868d791a1f4a17dc74d9ccf8806b2ff8b",
+  "code_sha256": "944b75790a398112e89c52c3b189b39d2044e3298b8632787cb4c821f95d51bc",
+  "marks_in_top_quarter": "1 of 7",
+  "expected_by_chance": "about 1 in 4"
+}

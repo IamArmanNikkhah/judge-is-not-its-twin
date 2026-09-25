@@ -1,0 +1,24 @@
+{
+  "written": "2026-09-25 ~09:1x CDT from reading the texts only, BEFORE any per-sentence surprise was computed",
+  "question": "In the stories the author scored 1-2 for logic (not prompt fit), does the reader model's surprise concentrate on the sentences where the logic breaks?",
+  "reading_rule": "Per story, mean per-token NLL (olmo2-base, completion-prefix) per sentence. Break causes surprise: marked sentences sit in the top quarter of their story's sentences. Diffuse: marked sentences sit near the story median. Illustration for the write-up, n = 3 stories and 7 marked sentences; no test, no threshold beyond the quarter.",
+  "excluded": "ff-06 more-predictable (scored 2) reads fluent; plausibly a prompt miss, not a logic break, so it has nothing to mark.",
+  "stories": [
+    {"source": "screen-v3-decoding-t1.3/blind-read-KEY.json", "pair": "pair 1", "side": "B", "label": "river (T=1.3, coherence 2)",
+     "breaks": [
+       {"sentence_contains": "How can it be missing from your map?", "why": "a river that 'hasn't existed for centuries' is treated as a thing the map should show; the premise inverts"},
+       {"sentence_contains": "the river must've gotten erased in the process", "why": "the river was on the map one paragraph earlier; now it was erased"}
+     ]},
+    {"source": "natural-pairs-blind-read/blind-read-KEY.json", "pair": "pair 2", "side": "A", "label": "inherited debt (natural, less predictable, coherence 1)",
+     "breaks": [
+       {"sentence_contains": "had not just inherited clients; he had left her with their debts", "why": "who inherited what, and whose debt, flips mid-sentence"},
+       {"sentence_contains": "she began to schedule cosmic surgeries for her grandfather's clients", "why": "the debt silently becomes a business she runs"},
+       {"sentence_contains": "She was shocked at how well these surgeries worked", "why": "the premise of an unpayable bill is dropped"}
+     ]},
+    {"source": "natural-pairs-blind-read/blind-read-KEY.json", "pair": "pair 3", "side": "B", "label": "stopped bells (natural, less predictable, coherence 2)",
+     "breaks": [
+       {"sentence_contains": "She recognized it immediately - the clock from the town square", "why": "the town clock arrives as a metal ball a stranger carried"},
+       {"sentence_contains": "etched into the clock's face", "why": "the ball now has a clock face"}
+     ]}
+  ]
+}

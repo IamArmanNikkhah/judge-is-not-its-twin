@@ -1,0 +1,24 @@
+B4b COMPETENCE GATE — rule: shuffled acc >= 0.80 and Wilson95 low > 0.50
+files: 7
+
+lineage stage  GATE  | shuffled acc [CI] mean_px        | stub acc [CI] mean_px            | offprompt acc [CI] mean_px       | pairs
+olmo2   base   PASS  | 0.95 [0.86,0.98] 0.71 (n=60)     | 1.00 [0.94,1.00] 0.80 (n=60)     | 0.58 [0.46,0.70] 0.54 (n=60)     | 180
+olmo2   sft    FAIL  | 0.47 [0.35,0.59] 0.51 (n=60)     | 0.97 [0.89,0.99] 0.78 (n=60)     | 0.60 [0.47,0.71] 0.55 (n=60)     | 180
+olmo2   dpo    FAIL  | 0.47 [0.35,0.59] 0.51 (n=60)     | 0.95 [0.86,0.98] 0.84 (n=60)     | 0.60 [0.47,0.71] 0.56 (n=60)     | 180
+olmo2   final  FAIL  | 0.48 [0.36,0.61] 0.52 (n=60)     | 0.95 [0.86,0.98] 0.85 (n=60)     | 0.60 [0.47,0.71] 0.57 (n=60)     | 180
+zephyr  base   PASS  | 0.88 [0.78,0.94] 0.63 (n=60)     | 0.98 [0.91,1.00] 0.71 (n=60)     | 0.57 [0.44,0.68] 0.52 (n=60)     | 180
+zephyr  sft    FAIL  | 0.13 [0.07,0.24] 0.39 (n=60)     | 1.00 [0.94,1.00] 0.72 (n=60)     | 0.60 [0.47,0.71] 0.52 (n=60)     | 180
+zephyr  dpo    FAIL  | 0.40 [0.29,0.53] 0.47 (n=60)     | 1.00 [0.94,1.00] 0.87 (n=60)     | 0.62 [0.49,0.73] 0.59 (n=60)     | 180
+
+position bias (mean |order disagreement| on shuffled pairs):
+   olmo2   base   0.179
+   olmo2   sft    0.458
+   olmo2   dpo    0.675
+   olmo2   final  0.683
+   zephyr  base   0.099
+   zephyr  sft    0.158
+   zephyr  dpo    0.478
+
+Reading: shuffled is the harsh test and the only one that gates. A judge under ~0.6 on
+stub prefers short to long or cannot see length; a judge near 0.5 on offprompt is not
+reading the prompt. Both are findings about that stage, reported alongside its slope.

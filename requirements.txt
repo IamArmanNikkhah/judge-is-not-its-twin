@@ -1,0 +1,5 @@
+# Analysis (every table and bound in the paper): numpy only.
+numpy>=1.26
+# Generation, predictability scoring and judging (GPU): versions used for the reported runs.
+torch>=2.11
+transformers>=5.16

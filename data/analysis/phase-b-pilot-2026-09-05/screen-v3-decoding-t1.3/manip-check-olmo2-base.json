@@ -1,0 +1,12 @@
+{
+  "bootstrap_95": [
+    0.594692,
+    0.9082045000000001
+  ],
+  "frac_treatment_less_typical": 0.95,
+  "manipulation_detected": true,
+  "mean_delta_nll": 0.7675955,
+  "n_pairs": 20,
+  "reading": "positive delta = treatment arm is LESS typical to the reader (the intended direction)",
+  "ref_tag": "olmo2-base"
+}

@@ -1,0 +1,85 @@
+{
+ "pair 1": {
+  "A": "less_predictable",
+  "B": "more_predictable",
+  "ids": [
+   "pb-pilot-ordinary-20260905__ff-06__zephyr-dpo__s411k1",
+   "pb-pilot-ordinary-20260905__ff-06__zephyr-dpo__s411k3"
+  ],
+  "prompt_id": "ff-06",
+  "gap_nll": 0.5259714693877549,
+  "positions_used": 245,
+  "words": [
+   200,
+   219
+  ]
+ },
+ "pair 2": {
+  "A": "less_predictable",
+  "B": "more_predictable",
+  "ids": [
+   "pb-pilot-ordinary-20260905__ff-09__zephyr-dpo__s411k3",
+   "pb-pilot-ordinary-20260905__ff-09__zephyr-dpo__s411k0"
+  ],
+  "prompt_id": "ff-09",
+  "gap_nll": 0.30963309226932667,
+  "positions_used": 401,
+  "words": [
+   329,
+   409
+  ]
+ },
+ "pair 3": {
+  "A": "more_predictable",
+  "B": "less_predictable",
+  "ids": [
+   "pb-pilot-ordinary-topup-20260905__ff-10__zephyr-dpo__s411k2",
+   "pb-pilot-ordinary-20260905__ff-10__zephyr-dpo__s411k0"
+  ],
+  "prompt_id": "ff-10",
+  "gap_nll": 0.30155918714555763,
+  "positions_used": 529,
+  "words": [
+   411,
+   487
+  ]
+ },
+ "pair 4": {
+  "A": "more_predictable",
+  "B": "less_predictable",
+  "ids": [
+   "pb-pilot-ordinary-20260905__ff-03__zephyr-dpo__s411k1",
+   "pb-pilot-ordinary-20260905__ff-03__zephyr-dpo__s411k3"
+  ],
+  "prompt_id": "ff-03",
+  "gap_nll": 0.4542345317220544,
+  "positions_used": 331,
+  "words": [
+   274,
+   266
+  ]
+ },
+ "_meta": {
+  "rule": "widest positions-matched Rule-3 pair per prompt, skipping graded stories; top N prompts; gate: every less-predictable story >= 3 coherence AND median >= 4",
+  "ref_tag": "olmo2-base",
+  "skipped_graded": [
+   "pb-pilot-decoding-sweep-20260906-t1.3__ff-01__zephyr-dpo__decoding__s411k1",
+   "pb-pilot-decoding-sweep-20260906-t1.3__ff-04__zephyr-dpo__decoding__s411k1",
+   "pb-pilot-decoding-sweep-20260906-t1.3__ff-09__zephyr-dpo__decoding__s411k1",
+   "pb-pilot-decoding-sweep-20260906-t1.3__ff-12__zephyr-dpo__decoding__s411k1",
+   "pb-pilot-ordinary-20260905__ff-01__zephyr-dpo__s411k2",
+   "pb-pilot-ordinary-20260905__ff-04__zephyr-dpo__s411k2",
+   "pb-pilot-ordinary-20260905__ff-09__zephyr-dpo__s411k2",
+   "pb-pilot-ordinary-topup-20260905__ff-12__zephyr-dpo__s411k2"
+  ],
+  "code_sha256": "eb3fa71918f32030165b5742ccd529f0f869750614776deb6d40f7f22a23223a",
+  "input_sha256": {
+   "data/runs/pb-pilot-ordinary-20260905/outputs.jsonl": "573e8b22a899680828ab1c046cc3a6cd654c6e3f79e2a88a50ab49f079ce614a",
+   "data/runs/pb-pilot-ordinary-topup-20260905/outputs.jsonl": "37c0d0aea094c7c082c99baf47b57e9a7d681bfb894a94ac56cc468c6307e3a7",
+   "data/typicality/typ-pb-pilot+sweep-olmo2-base-prefix.jsonl": "ca7c0c9236d0eabf64fc3e311d34850a7b879f24268ae7c8ee766f9398b07e80",
+   "data/analysis/phase-b-pilot-2026-09-05/screen-v4-decoding-t1.3-arm/excluded.jsonl": "2b010ea108524ad6ba357f21d081c6ada9b1df4fb75a6734c7f1a53cf1faa1eb",
+   "data/items/prompts.jsonl": "75d56fa2dde8cf4a3ce0bc2727d0849c9e12eec456afc842e5aac896ba4139bc",
+   "data/analysis/phase-b-pilot-2026-09-05/screen-v3-decoding-t1.3/blind-read-KEY.json": "77a14ad7a1295e9e63e395ae474a6be5df69769bf45b1fd9eb0e872a8ef4dce5"
+  }
+ }
+}

@@ -1,0 +1,303 @@
+{
+  "all_within_group_candidates": 13100,
+  "cells": [
+    {
+      "abs_delta_log_chars": {
+        "max": 3.6864956627586603,
+        "median": 0.011035319276918809,
+        "min": 0.0,
+        "n": 100,
+        "q25": 0.004937676596953313,
+        "q75": 0.027482312844301526
+      },
+      "abs_delta_nll": {
+        "max": 1.5361399999999998,
+        "median": 0.18798499999999996,
+        "min": 0.0019499999999998963,
+        "n": 100,
+        "q25": 0.07446749999999991,
+        "q75": 0.33715500000000004
+      },
+      "lineage": "olmo2",
+      "min_pair_chars": {
+        "max": 1087,
+        "median": 956.0,
+        "min": 21,
+        "n": 100,
+        "q25": 901.5,
+        "q75": 996.0
+      },
+      "pairs": 100,
+      "prompts": 10,
+      "stage": "base"
+    },
+    {
+      "abs_delta_log_chars": {
+        "max": 3.507985449311167,
+        "median": 0.01045198586796229,
+        "min": 0.0,
+        "n": 98,
+        "q25": 0.005315556165407722,
+        "q75": 0.05032638379271083
+      },
+      "abs_delta_nll": {
+        "max": 6.345699999999999,
+        "median": 0.18261499999999997,
+        "min": 0.0019500000000001183,
+        "n": 98,
+        "q25": 0.09570499999999998,
+        "q75": 0.32323999999999997
+      },
+      "lineage": "olmo2",
+      "min_pair_chars": {
+        "max": 1113,
+        "median": 999.0,
+        "min": 21,
+        "n": 98,
+        "q25": 857.0,
+        "q75": 1044.0
+      },
+      "pairs": 98,
+      "prompts": 10,
+      "stage": "dpo"
+    },
+    {
+      "abs_delta_log_chars": {
+        "max": 2.866274206317104,
+        "median": 0.018868484304382736,
+        "min": 0.0,
+        "n": 95,
+        "q25": 0.004867683504531775,
+        "q75": 0.10604020968847327
+      },
+      "abs_delta_nll": {
+        "max": 1.29493,
+        "median": 0.22265999999999986,
+        "min": 0.0,
+        "n": 95,
+        "q25": 0.09911999999999987,
+        "q75": 0.39941499999999985
+      },
+      "lineage": "olmo2",
+      "min_pair_chars": {
+        "max": 1118,
+        "median": 978,
+        "min": 7,
+        "n": 95,
+        "q25": 538.0,
+        "q75": 1033.0
+      },
+      "pairs": 95,
+      "prompts": 10,
+      "stage": "final"
+    },
+    {
+      "abs_delta_log_chars": {
+        "max": 1.0082282271998406,
+        "median": 0.03421508044451404,
+        "min": 0.0,
+        "n": 87,
+        "q25": 0.01001510875593169,
+        "q75": 0.1727175404197034
+      },
+      "abs_delta_nll": {
+        "max": 2.70703,
+        "median": 0.23926000000000003,
+        "min": 0.0009799999999999809,
+        "n": 87,
+        "q25": 0.12597500000000006,
+        "q75": 0.4043
+      },
+      "lineage": "olmo2",
+      "min_pair_chars": {
+        "max": 1109,
+        "median": 918,
+        "min": 17,
+        "n": 87,
+        "q25": 374.5,
+        "q75": 992.5
+      },
+      "pairs": 87,
+      "prompts": 10,
+      "stage": "sft"
+    },
+    {
+      "abs_delta_log_chars": {
+        "max": 0.4186603985269968,
+        "median": 0.012162293912361361,
+        "min": 0.0,
+        "n": 100,
+        "q25": 0.004791159964664186,
+        "q75": 0.03198263227172881
+      },
+      "abs_delta_nll": {
+        "max": 0.9599600000000001,
+        "median": 0.19433,
+        "min": 0.0078099999999996506,
+        "n": 100,
+        "q25": 0.10180499999999992,
+        "q75": 0.36304000000000003
+      },
+      "lineage": "zephyr",
+      "min_pair_chars": {
+        "max": 1003,
+        "median": 835.5,
+        "min": 342,
+        "n": 100,
+        "q25": 725.5,
+        "q75": 883.5
+      },
+      "pairs": 100,
+      "prompts": 10,
+      "stage": "base"
+    },
+    {
+      "abs_delta_log_chars": {
+        "max": 0.339168647128565,
+        "median": 0.006798748870872213,
+        "min": 0.0,
+        "n": 100,
+        "q25": 0.00217655416702211,
+        "q75": 0.015287759134495602
+      },
+      "abs_delta_nll": {
+        "max": 0.8173800000000002,
+        "median": 0.1928700000000001,
+        "min": 0.00391000000000008,
+        "n": 100,
+        "q25": 0.09496749999999993,
+        "q75": 0.33129749999999997
+      },
+      "lineage": "zephyr",
+      "min_pair_chars": {
+        "max": 1062,
+        "median": 911.0,
+        "min": 551,
+        "n": 100,
+        "q25": 885.25,
+        "q75": 947.0
+      },
+      "pairs": 100,
+      "prompts": 10,
+      "stage": "dpo"
+    },
+    {
+      "abs_delta_log_chars": {
+        "max": 0.3286850460694443,
+        "median": 0.0074724752581003815,
+        "min": 0.0,
+        "n": 100,
+        "q25": 0.002973984049094108,
+        "q75": 0.018447481659362795
+      },
+      "abs_delta_nll": {
+        "max": 0.75098,
+        "median": 0.18310500000000007,
+        "min": 0.002929999999999877,
+        "n": 100,
+        "q25": 0.09521999999999997,
+        "q75": 0.29980749999999995
+      },
+      "lineage": "zephyr",
+      "min_pair_chars": {
+        "max": 1053,
+        "median": 910.0,
+        "min": 442,
+        "n": 100,
+        "q25": 865.25,
+        "q75": 945.5
+      },
+      "pairs": 100,
+      "prompts": 10,
+      "stage": "sft"
+    }
+  ],
+  "code_sha256": "bddb7ac1e930ed77df1650afbe00b49f593716cc4324337341c3df4b6ac4630c",
+  "groups": 70,
+  "identical_text_pairs_skipped": [
+    [
+      "ff-01__olmo2-final__s411k1",
+      "ff-01__olmo2-final__s411k17"
+    ],
+    [
+      "ff-01__olmo2-final__s411k19",
+      "ff-01__olmo2-final__s411k3"
+    ],
+    [
+      "ff-01__olmo2-final__s411k0",
+      "ff-01__olmo2-final__s411k16"
+    ],
+    [
+      "ff-01__olmo2-final__s411k18",
+      "ff-01__olmo2-final__s411k2"
+    ],
+    [
+      "ff-01__olmo2-sft__s411k1",
+      "ff-01__olmo2-sft__s411k10"
+    ],
+    [
+      "ff-01__olmo2-sft__s411k13",
+      "ff-01__olmo2-sft__s411k4"
+    ],
+    [
+      "ff-01__olmo2-sft__s411k12",
+      "ff-01__olmo2-sft__s411k3"
+    ],
+    [
+      "ff-01__olmo2-sft__s411k15",
+      "ff-01__olmo2-sft__s411k6"
+    ],
+    [
+      "ff-01__olmo2-sft__s411k11",
+      "ff-01__olmo2-sft__s411k2"
+    ],
+    [
+      "ff-01__olmo2-sft__s411k14",
+      "ff-01__olmo2-sft__s411k5"
+    ],
+    [
+      "ff-01__olmo2-sft__s411k16",
+      "ff-01__olmo2-sft__s411k7"
+    ],
+    [
+      "ff-01__olmo2-sft__s411k0",
+      "ff-01__olmo2-sft__s411k9"
+    ]
+  ],
+  "input_sha256": {
+    "data/items/bank-pilot.jsonl": "5ebf596ae9d68de56fac1427a816f9b529f04c39909fe193a9c598bd94e7bd8e",
+    "data/typicality/typ-mistral-base-prefix.jsonl": "35dcba4e08f9701f73b4aa1fc6fcf267519789bd1813d1127789f5a51344b967",
+    "data/typicality/typ-olmo2-base-prefix.jsonl": "38f17391335aaecb5716b9775bc6082d9013eed34917f9f81ffdc79419fd5426"
+  },
+  "items": 1389,
+  "items_per_group": {
+    "16": 1,
+    "17": 1,
+    "19": 4,
+    "20": 64
+  },
+  "length_rejected_pairs": [],
+  "limitations": [
+    "No independent quality ratings; nonempty is not good.",
+    "Known Phase A items and prompts, not a fresh confirmatory sample.",
+    "No new generations or judges run; no causal or equivalence claim.",
+    "Reference log probability is a familiarity proxy, not semantic novelty.",
+    "Judge --pairs-file bypasses lineage exclusion; split by opposite lineage before a run.",
+    "No numeric quality, gap, power or competence gate ratified for B0."
+  ],
+  "max_length_ratio": null,
+  "pairs": 680,
+  "references": {
+    "olmo2": "mistral-base",
+    "zephyr": "olmo2-base"
+  },
+  "selection": "adjacent character lengths; disjoint within prompt/model/lineage/stage; no gap cut",
+  "status": "RETROSPECTIVE_FEASIBILITY_ONLY_NOT_QUALITY_VALIDATED",
+  "unmatched_ids": [
+    "ff-07__olmo2-dpo__s411k2",
+    "ff-08__olmo2-dpo__s411k11",
+    "ff-08__olmo2-final__s411k17",
+    "ff-02__olmo2-sft__s411k13",
+    "ff-08__olmo2-sft__s411k10"
+  ]
+}

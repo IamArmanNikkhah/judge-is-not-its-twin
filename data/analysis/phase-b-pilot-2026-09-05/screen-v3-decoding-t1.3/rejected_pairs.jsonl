@@ -1,0 +1,3 @@
+{"control": "pb-pilot-ordinary-20260905__ff-03__zephyr-dpo__s411k0", "prompt_id": "ff-03", "treatment": "pb-pilot-decoding-sweep-20260906-t1.3__ff-03__zephyr-dpo__decoding__s411k1", "words_control": 282, "words_treatment": 551}
+{"control": "pb-pilot-ordinary-20260905__ff-09__zephyr-dpo__s411k0", "prompt_id": "ff-09", "treatment": "pb-pilot-decoding-sweep-20260906-t1.3__ff-09__zephyr-dpo__decoding__s411k0", "words_control": 409, "words_treatment": 559}
+{"control": "pb-pilot-ordinary-topup-20260905__ff-12__zephyr-dpo__s411k0", "prompt_id": "ff-12", "treatment": "pb-pilot-decoding-sweep-20260906-t1.3__ff-12__zephyr-dpo__decoding__s411k0", "words_control": 432, "words_treatment": 275}

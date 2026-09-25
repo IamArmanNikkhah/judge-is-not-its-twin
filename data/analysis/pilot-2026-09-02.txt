@@ -1,0 +1,95 @@
+
+==============================================================================
+1. GENERATION SUMMARY (data/runs/gen-*-pilot.jsonl)
+==============================================================================
+stage              n  empty    <40ch      len min/med/max
+olmo2-base       200      0        1       21/ 959/1114   unique slots 200
+olmo2-sft        200      8       13        0/ 899/1144   unique slots 200
+olmo2-dpo        200      2        3        0/1009/1174   unique slots 200
+olmo2-final      200      1        3        0/ 986/1185   unique slots 200
+zephyr-base      200      0        0      342/ 839/1020   unique slots 200
+zephyr-sft       200      0        0      442/ 915/1067   unique slots 200
+zephyr-dpo       200      0        0      551/ 915/1104   unique slots 200
+
+==============================================================================
+2. BANK COMPOSITION (data/items/bank-pilot.jsonl) — empty-only cut
+==============================================================================
+   olmo2-base      200
+   olmo2-dpo       198
+   olmo2-final     199
+   olmo2-sft       192
+   zephyr-base     200
+   zephyr-dpo      200
+   zephyr-sft      200
+   TOTAL 1389   lineages ['olmo2', 'zephyr']   prompts 10
+   drop table over all 1400 generations (what each candidate cut removes):
+     chars <    1:  11
+     chars <   20:  14
+     chars <   40:  20
+     chars <   60:  27
+     chars <  100:  42
+     chars <  150:  58
+     chars <  200:  65
+
+==============================================================================
+3. SHARED-DIET TYPICALITY — mean per-token NLL by producing stage, per reader
+==============================================================================
+producer       read by mistral  read by olmo2
+olmo2-base              2.050          2.048
+olmo2-sft               2.040          2.107
+olmo2-dpo               1.981          2.072
+olmo2-final             2.006          2.034
+zephyr-base             1.863          2.201
+zephyr-sft              1.452          1.726
+zephyr-dpo              1.436          1.750
+
+==============================================================================
+4. POSITIVE CONTROL — BASE-stage items only (each reader should find its own family's
+==============================================================================
+   raw samples more predictable). Whole-family averaging is CONFOUNDED: aligned
+   models emit low-entropy text ANY reader finds predictable, so it measures
+   alignment, not kinship. This cut is the only apples-to-apples one.
+   mistral-base  own 1.863  stranger 2.050  -> own lower? True
+   olmo2-base    own 2.048  stranger 2.201  -> own lower? True
+
+==============================================================================
+5. SHARED-DIET COLLAPSE — base -> aligned, with per-prompt robustness
+==============================================================================
+   zephyr  read by mistral-base  base 1.863 -> sft 1.452 (-22.0%) | dpo 1.436 (-22.9%)
+           per-prompt drops 10/10   deltas -0.48 -0.38 -0.53 -0.44 -0.25 -0.39 -0.39 -0.53 -0.36 -0.45
+   zephyr  read by olmo2-base    base 2.201 -> sft 1.726 (-21.6%) | dpo 1.750 (-20.5%)
+           per-prompt drops 10/10   deltas -0.55 -0.43 -0.57 -0.49 -0.29 -0.40 -0.45 -0.57 -0.41 -0.49
+   olmo2   read by mistral-base  base 2.050 -> sft 2.040 (-0.5%) | dpo 1.981 (-3.4%) | final 2.006 (-2.1%)
+           per-prompt drops  5/10   deltas -0.13 +0.04 -0.07 -0.07 +0.01 +0.08 -0.10 -0.23 +0.04 +0.02
+   olmo2   read by olmo2-base    base 2.048 -> sft 2.107 (+2.8%) | dpo 2.072 (+1.2%) | final 2.034 (-0.7%)
+           per-prompt drops  4/10   deltas -0.11 +0.15 -0.04 -0.05 +0.07 +0.22 +0.01 -0.17 +0.13 +0.02
+
+==============================================================================
+6. OWN-DIET DELTA-PPL — NLL(own aligned) - NLL(own base), by producing stage
+==============================================================================
+   negative = the aligned model finds that text MORE familiar than its base did
+
+   OLMO2  [olmo2-instruct minus olmo2-base]
+     own-lineage : base +0.353  sft +0.077  dpo -0.305  final -0.240
+     out-lineage : base +0.367  sft +0.323  dpo +0.260
+     spread across stages, own 0.658  (a pure calibration offset would give ~0)
+     specificity: own range 0.658 vs out-of-lineage range 0.107  -> 6.1x
+     biggest single step: -> dpo  -0.382
+     per-prompt: base is the most-foreign stage in 10/10 prompts
+
+   ZEPHYR  [zephyr-final minus mistral-base]
+     own-lineage : base +0.103  sft -0.100  dpo -0.212
+     out-lineage : base +0.128  sft +0.050  dpo -0.037  final -0.040
+     spread across stages, own 0.315  (a pure calibration offset would give ~0)
+     specificity: own range 0.315 vs out-of-lineage range 0.168  -> 1.9x
+     biggest single step: -> sft  -0.203
+     per-prompt: base is the most-foreign stage in 10/10 prompts
+
+==============================================================================
+7. JUDGE PIPELINE VALIDATION — olmo2-base, data/judge/judge-olmo2-base.jsonl
+==============================================================================
+   PIPELINE PROOF ONLY. The B4b competence gate does not exist; nothing below is evidence.
+   pairs 120 | lineages judged ['zephyr'] | self-lineage exclusion HELD | same-source pairs 0 | prompts 10
+   degeneracy: p_x min/med/max 0.077/0.441/0.831  sd 0.1466  frac within .02 of .50 = 0.09
+   position bias: mean |order disagreement| 0.143 ; raw p(first slot) 0.449
+   typicality slope (p_x on rarity_x - rarity_y): beta -0.0324  r -0.077  n 120   <- NOT INTERPRETED

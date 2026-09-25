@@ -1,0 +1,20 @@
+{
+  "HuggingFaceH4/zephyr-7b-beta": {
+    "judge_fits": true,
+    "judge_max_len": 2048,
+    "longest_item": 712,
+    "longest_judge_input": 1363,
+    "scorer_fits": true,
+    "scorer_max_len": 1024
+  },
+  "_pairs": 32,
+  "_verdict": "fits",
+  "allenai/OLMo-2-1124-7B-SFT": {
+    "judge_fits": true,
+    "judge_max_len": 2048,
+    "longest_item": 626,
+    "longest_judge_input": 1219,
+    "scorer_fits": true,
+    "scorer_max_len": 1024
+  }
+}

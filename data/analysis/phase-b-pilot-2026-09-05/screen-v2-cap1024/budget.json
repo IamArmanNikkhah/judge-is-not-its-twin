@@ -1,0 +1,28 @@
+{
+  "HuggingFaceH4/zephyr-7b-beta": {
+    "judge_fits": true,
+    "judge_max_len": 2560,
+    "longest_item": 681,
+    "longest_judge_input": 1349,
+    "scorer_fits": true,
+    "scorer_max_len": 1280
+  },
+  "_pairs": 29,
+  "_verdict": "fits",
+  "allenai/OLMo-2-1124-7B-SFT": {
+    "judge_fits": true,
+    "judge_max_len": 2560,
+    "longest_item": 618,
+    "longest_judge_input": 1235,
+    "scorer_fits": true,
+    "scorer_max_len": 1280
+  },
+  "mistralai/Mistral-7B-v0.1": {
+    "judge_fits": true,
+    "judge_max_len": 2560,
+    "longest_item": 681,
+    "longest_judge_input": 1349,
+    "scorer_fits": true,
+    "scorer_max_len": 1280
+  }
+}

@@ -1,0 +1,160 @@
+
+==============================================================================
+R1. LENGTH CONFOUND — standalone scoring makes longer items cheaper per token
+==============================================================================
+   n_chars per stage (median) and within-stage Pearson r(mean_nll, log n_chars)
+   under the held-out reader. A strong negative r inside every stage means
+   length buys NLL; then the question is whether stage survives length control.
+   olmo2  read by mistral-base
+     base   n=200  med chars  958   r(nll, log len) = -0.693
+     sft    n=192  med chars  914   r(nll, log len) = -0.770
+     dpo    n=198  med chars 1010   r(nll, log len) = -0.745
+     final  n=199  med chars  986   r(nll, log len) = -0.849
+   zephyr  read by olmo2-base
+     base   n=200  med chars  838   r(nll, log len) = -0.029
+     sft    n=200  med chars  915   r(nll, log len) = -0.016
+     dpo    n=200  med chars  915   r(nll, log len) = -0.088
+
+   OLS within lineage: nll ~ stage dummies + log(n_chars). Stage effects are
+   vs base. 'raw' = without the length term (matches RESULTS §2 deltas).
+   olmo2 (read by mistral-base)
+     sft    raw -0.010   length-adjusted -0.278
+     dpo    raw -0.069   length-adjusted -0.108
+     final  raw -0.044   length-adjusted -0.161
+     log-length coefficient -0.603 per e-fold of length
+   zephyr (read by olmo2-base)
+     sft    raw -0.475   length-adjusted -0.467
+     dpo    raw -0.452   length-adjusted -0.443
+     log-length coefficient -0.063 per e-fold of length
+
+   Length-matched cut: items with 700 <= n_chars <= 1000 only.
+   olmo2: base 1.976 (n=135, +0.0%)  sft 1.743 (n=75, -11.8%)  dpo 1.789 (n=61, -9.5%)  final 1.830 (n=53, -7.4%)
+   zephyr: base 2.193 (n=157, +0.0%)  sft 1.719 (n=175, -21.6%)  dpo 1.750 (n=188, -20.2%)
+
+   R1b. MIN-LENGTH SWEEP — is the within-stage length correlation the short tail?
+   (standalone scoring: a 6-token item is all contextless tokens; the 1/n cost of the
+   cold start dominates only when items are short. Zephyr has no short items.)
+   olmo2  read by mistral-base
+     chars>=   0  base 2.050/n200(+0.0%)  sft 2.040/n192(-0.5%)  dpo 1.981/n198(-3.4%)  final 2.006/n199(-2.1%)
+                 within-stage r(nll, log len): -0.69  -0.77  -0.75  -0.85
+     chars>= 200  base 2.014/n195(+0.0%)  sft 1.863/n165(-7.5%)  dpo 1.879/n187(-6.7%)  final 1.920/n188(-4.7%)
+                 within-stage r(nll, log len): -0.43  -0.46  -0.49  -0.62
+     chars>= 400  base 1.997/n190(+0.0%)  sft 1.809/n143(-9.4%)  dpo 1.858/n181(-6.9%)  final 1.866/n168(-6.6%)
+                 within-stage r(nll, log len): -0.18  -0.34  -0.31  -0.39
+     chars>= 600  base 1.986/n183(+0.0%)  sft 1.775/n125(-10.6%)  dpo 1.846/n171(-7.1%)  final 1.836/n150(-7.5%)
+                 within-stage r(nll, log len): +0.12  -0.07  -0.22  -0.18
+     chars>=400 prompt-level base->sft   drops 10/10 sign p=0.0020 mean -0.195 CI [-0.241, -0.153]
+     chars>=400 prompt-level base->dpo   drops 10/10 sign p=0.0020 mean -0.138 CI [-0.179, -0.098]
+     chars>=400 prompt-level base->final drops 10/10 sign p=0.0020 mean -0.121 CI [-0.147, -0.093]
+   zephyr  read by olmo2-base
+     chars>=   0  base 2.201/n200(+0.0%)  sft 1.726/n200(-21.6%)  dpo 1.750/n200(-20.5%)
+                 within-stage r(nll, log len): -0.03  -0.02  -0.09
+     chars>= 200  base 2.201/n200(+0.0%)  sft 1.726/n200(-21.6%)  dpo 1.750/n200(-20.5%)
+                 within-stage r(nll, log len): -0.03  -0.02  -0.09
+     chars>= 400  base 2.201/n199(+0.0%)  sft 1.726/n200(-21.6%)  dpo 1.750/n200(-20.5%)
+                 within-stage r(nll, log len): -0.03  -0.02  -0.09
+     chars>= 600  base 2.196/n180(+0.0%)  sft 1.723/n197(-21.5%)  dpo 1.747/n198(-20.4%)
+                 within-stage r(nll, log len): +0.03  +0.05  -0.04
+     chars>=400 prompt-level base->sft   drops 10/10 sign p=0.0020 mean -0.475 CI [-0.531, -0.416]
+     chars>=400 prompt-level base->dpo   drops 10/10 sign p=0.0020 mean -0.452 CI [-0.503, -0.400]
+
+   Own-diet Delta-ppl vs length (does the own-diet gradient ride on length too?)
+   olmo2  within-stage r(dppl, log len): -0.46  -0.59  +0.30  -0.64   | dppl on chars>=400: base +0.341  sft +0.020  dpo -0.289  final -0.299
+   zephyr within-stage r(dppl, log len): +0.02  +0.13  +0.16   | dppl on chars>=400: base +0.103  sft -0.100  dpo -0.212
+
+   What the short OLMo items ARE (shortest 5 per aligned stage, first 90 chars):
+     sft     17ch nll 5.03  'Debt of the Heart'
+     sft     27ch nll 2.11  "I'm sorry, I can't do that."
+     sft     27ch nll 3.88  'He waited at the red light.'
+     sft     29ch nll 2.76  '"Ma? It\'s me. It\'s your son."'
+     sft     36ch nll 3.34  'The city was dark. No one was awake.'
+     dpo     21ch nll 9.06  'Jenna couldnassistant'
+     dpo     55ch nll 5.23  'She looked at the phone. Should she or shouldnassistant'
+     dpo     55ch nll 3.11  'The light cycled through its colors; red, amber, green.'
+     dpo     68ch nll 4.01  'Old George, the stuffed alligator, remembered the day it was hunted.'
+     dpo     75ch nll 2.63  'The light turns amber. She hesitates, then guns it across the intersection.'
+     final    7ch nll 6.21  'Silence'
+     final   10ch nll 5.53  '"Goodbye."'
+     final   65ch nll 2.88  'Jenny dialed the number. "I love you." She hung up.\\n\\nIt was done.'
+     final   84ch nll 3.07  'The last phone call ever made was brief and silent.\\n\\nIt hung in the air, unfinished.'
+     final   84ch nll 3.00  'The teacup whispers stories of porcelain tea parties and delicate sips of Earl Grey.'
+
+==============================================================================
+R2. DEGENERACY — repeated word-4gram rate per stage (loops read as low NLL)
+==============================================================================
+   olmo2  read by mistral-base
+     base   mean rep4 0.009  items rep4>0.2:   1/200   nll all 2.050 | loops 1.631 | clean 2.052
+     sft    mean rep4 0.013  items rep4>0.2:   3/192   nll all 2.040 | loops 1.676 | clean 2.046
+     dpo    mean rep4 0.000  items rep4>0.2:   0/198   nll all 1.981 | loops   -   | clean 1.981
+     final  mean rep4 0.000  items rep4>0.2:   0/199   nll all 2.006 | loops   -   | clean 2.006
+   zephyr  read by olmo2-base
+     base   mean rep4 0.011  items rep4>0.2:   2/200   nll all 2.201 | loops 1.735 | clean 2.206
+     sft    mean rep4 0.003  items rep4>0.2:   0/200   nll all 1.726 | loops   -   | clean 1.726
+     dpo    mean rep4 0.001  items rep4>0.2:   0/200   nll all 1.750 | loops   -   | clean 1.750
+
+   Collapse recomputed on loop-free items only (rep4 <= 0.2), held-out reader:
+   olmo2: base 2.052 (+0.0%)  sft 2.046 (-0.3%)  dpo 1.981 (-3.5%)  final 2.006 (-2.2%)
+   zephyr: base 2.206 (+0.0%)  sft 1.726 (-21.7%)  dpo 1.750 (-20.7%)
+
+==============================================================================
+R3. PROMPT-LEVEL INFERENCE — the cluster is the prompt (n=10); items are not independent
+==============================================================================
+   Per-prompt mean NLL by stage; delta = aligned - base per prompt. Exact sign test
+   (two-sided) on the direction, cluster bootstrap (10000 reps) for the mean delta.
+   -- shared-diet (held-out reader) --
+   olmo2  base->sft    drops  6/10  sign p=0.7539   mean delta -0.011  95% CI [-0.095, +0.080]
+   olmo2  base->dpo    drops  8/10  sign p=0.1094   mean delta -0.069  95% CI [-0.131, -0.004]
+   olmo2  base->final  drops  7/10  sign p=0.3438   mean delta -0.044  95% CI [-0.147, +0.079]
+   zephyr base->sft    drops 10/10  sign p=0.0020   mean delta -0.475  95% CI [-0.531, -0.416]
+   zephyr base->dpo    drops 10/10  sign p=0.0020   mean delta -0.452  95% CI [-0.503, -0.399]
+   -- own-diet Delta-ppl: aligned reader minus base reader, grouped by producing stage --
+   olmo2  base->sft    drops 10/10  sign p=0.0020   mean delta -0.276  95% CI [-0.312, -0.232]
+   olmo2  base->dpo    drops 10/10  sign p=0.0020   mean delta -0.657  95% CI [-0.700, -0.618]
+   olmo2  base->final  drops 10/10  sign p=0.0020   mean delta -0.593  95% CI [-0.652, -0.522]
+   zephyr base->sft    drops 10/10  sign p=0.0020   mean delta -0.203  95% CI [-0.211, -0.195]
+   zephyr base->dpo    drops 10/10  sign p=0.0020   mean delta -0.315  95% CI [-0.321, -0.309]
+   -- monotonicity: is the stage order base > sft > dpu strictly decreasing inside each prompt? --
+   olmo2  own-diet base>sft>dpo in 10/10 prompts
+   zephyr own-diet base>sft>dpo in 10/10 prompts
+
+==============================================================================
+R4. DELTA-PPL DECOMPOSITION — own pair minus STRANGER pair on the same items
+==============================================================================
+   own(i)      = NLL(own aligned) - NLL(own base)
+   stranger(i) = NLL(other lineage aligned) - NLL(other lineage base)   [same item]
+   specific(i) = own(i) - stranger(i). A constant calibration offset between the
+   pairs moves every stage equally, so STAGE DIFFERENCES in 'specific' are what
+   the shared aligned-style component cannot explain.
+   olmo2 items
+     stage        own  stranger  specific
+     base      +0.353    +0.128    +0.225
+     sft       +0.077    +0.050    +0.027
+     dpo       -0.305    -0.037    -0.267
+     final     -0.240    -0.040    -0.200
+     spread across stages: own 0.658  stranger 0.168  specific 0.492
+     per-prompt: base most-foreign on 'specific' in 10/10; base->dpo drops 10/10, sign p=0.0020, mean -0.492 CI [-0.528, -0.458]
+     item-level r(own, stranger) = +0.709  (shared component strength across items)
+   zephyr items
+     stage        own  stranger  specific
+     base      +0.103    +0.367    -0.264
+     sft       -0.100    +0.323    -0.423
+     dpo       -0.212    +0.260    -0.472
+     spread across stages: own 0.315  stranger 0.107  specific 0.208
+     per-prompt: base most-foreign on 'specific' in 10/10; base->dpo drops 10/10, sign p=0.0020, mean -0.208 CI [-0.239, -0.178]
+     item-level r(own, stranger) = +0.393  (shared component strength across items)
+
+==============================================================================
+R5. DISTRIBUTION SHAPE — quantiles of held-out NLL per stage
+==============================================================================
+   olmo2  read by mistral-base          p10    p25    p50    p75    p90   frac<base p50
+     base                     1.709  1.830  2.016  2.178  2.314     0.49
+     sft                      1.556  1.688  1.906  2.150  2.744     0.64
+     dpo                      1.558  1.715  1.880  2.072  2.359     0.70
+     final                    1.598  1.708  1.887  2.152  2.440     0.64
+   zephyr  read by olmo2-base          p10    p25    p50    p75    p90   frac<base p50
+     base                     1.932  2.044  2.200  2.342  2.477     0.50
+     sft                      1.449  1.553  1.722  1.847  2.012     0.96
+     dpo                      1.423  1.553  1.746  1.925  2.067     0.95
+
+   Reading: a whole-distribution shift moves every quantile by about the same
+   amount; a subset collapsing drags p10/p25 far more than p75/p90.

@@ -1,0 +1,16 @@
+A3 TRIPWIRES  sd(p_x) >= 0.07, order-disagreement <= 0.45, |r(p_better, dtyp)| <= 0.5
+judge   stage  crit          n   sd_px  disagr FROZEN |   r_dtyp ENTGL 
+olmo2   base   better      200   0.097   0.108 ok     |   -0.189 ok    
+olmo2   base   creative    200   0.142   0.147 ok     |   -0.235 -     
+olmo2   dpo    better      200   0.177   0.295 ok     |   -0.108 ok    
+olmo2   dpo    creative    200   0.236   0.381 ok     |   -0.083 -     
+olmo2   final  better      200   0.191   0.277 ok     |   -0.110 ok    
+olmo2   final  creative    200   0.248   0.371 ok     |   -0.084 -     
+olmo2   sft    better      200   0.116   0.252 ok     |   -0.126 ok    
+olmo2   sft    creative    200   0.168   0.307 ok     |   -0.129 -     
+zephyr  base   better      200   0.098   0.097 ok     |   -0.264 ok    
+zephyr  base   creative    200   0.157   0.146 ok     |   -0.284 -     
+zephyr  dpo    better      200   0.291   0.187 ok     |   -0.192 ok    
+zephyr  dpo    creative    200   0.336   0.214 ok     |   -0.150 -     
+zephyr  sft    better      200   0.123   0.089 ok     |   -0.292 ok    
+zephyr  sft    creative    200   0.183   0.118 ok     |   -0.240 -     

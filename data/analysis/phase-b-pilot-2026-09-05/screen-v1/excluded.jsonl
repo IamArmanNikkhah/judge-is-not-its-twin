@@ -1,0 +1,6 @@
+{"arm": "unlikely", "item_id": "pb-pilot-unlikely-20260905__ff-02__zephyr-dpo__unlikely__s411k2", "prompt_id": "ff-02", "reasons": ["no_eos", "no_terminal_punctuation"], "words": 555}
+{"arm": "unlikely", "item_id": "pb-pilot-unlikely-20260905__ff-03__zephyr-dpo__unlikely__s411k0", "prompt_id": "ff-03", "reasons": ["no_eos", "no_terminal_punctuation"], "words": 560}
+{"arm": "unlikely", "item_id": "pb-pilot-unlikely-20260905__ff-05__zephyr-dpo__unlikely__s411k2", "prompt_id": "ff-05", "reasons": ["no_eos", "no_terminal_punctuation"], "words": 558}
+{"arm": "unlikely", "item_id": "pb-pilot-unlikely-20260905__ff-06__zephyr-dpo__unlikely__s411k1", "prompt_id": "ff-06", "reasons": ["no_eos", "no_terminal_punctuation"], "words": 607}
+{"arm": "unlikely", "item_id": "pb-pilot-unlikely-20260905__ff-08__zephyr-dpo__unlikely__s411k0", "prompt_id": "ff-08", "reasons": ["no_eos", "no_terminal_punctuation"], "words": 501}
+{"arm": "unlikely", "item_id": "pb-pilot-unlikely-20260905__ff-10__zephyr-dpo__unlikely__s411k2", "prompt_id": "ff-10", "reasons": ["no_eos", "no_terminal_punctuation"], "words": 557}

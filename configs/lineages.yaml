@@ -1,0 +1,20 @@
+# Verified live on HF 2026-08-31 (raw/lock-gate-verification.md). 7-8B class.
+lineages:
+  olmo2:            # primary — Apache 2.0 end-to-end, no external base
+    base:     allenai/OLMo-2-1124-7B
+    sft:      allenai/OLMo-2-1124-7B-SFT
+    dpo:      allenai/OLMo-2-1124-7B-DPO
+    final:    allenai/OLMo-2-1124-7B-Instruct   # RLVR
+  tulu3:            # base is Meta-GATED — accept terms on HF before first download
+    base:     meta-llama/Llama-3.1-8B
+    sft:      allenai/Llama-3.1-Tulu-3-8B-SFT
+    dpo:      allenai/Llama-3.1-Tulu-3-8B-DPO
+    final:    allenai/Llama-3.1-Tulu-3-8B       # RLVR
+  zephyr:           # cross-lineage replication — MIT tuned stages
+    base:     mistralai/Mistral-7B-v0.1
+    sft:      HuggingFaceH4/mistral-7b-sft-beta
+    dpo:      HuggingFaceH4/zephyr-7b-beta
+
+# Held-out typicality references (shared-diet rarity): base models NOT in the judged lineage.
+# Rule: when scoring items for lineage L, reference set = the other two lineages' bases.
+reference_rule: leave-own-lineage-out

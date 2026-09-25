@@ -1,0 +1,39 @@
+{
+  "bootstrap_95": [
+    0.05332702107261693,
+    0.30199433230129286
+  ],
+  "code_sha256": "bec7cdcbe2c44d27a784cc33679620ef7aa89e9f1f330daa8e9731e8a44c3438",
+  "frac_typical_is_longer": 0.5666666666666667,
+  "input_sha256": {
+    "data/analysis/phase-b-pilot-2026-09-05/screen-v4-decoding-t1.3-arm/excluded.jsonl": "2b010ea108524ad6ba357f21d081c6ada9b1df4fb75a6734c7f1a53cf1faa1eb",
+    "data/runs/pb-pilot-ordinary-20260905/outputs.jsonl": "573e8b22a899680828ab1c046cc3a6cd654c6e3f79e2a88a50ab49f079ce614a",
+    "data/runs/pb-pilot-ordinary-topup-20260905/outputs.jsonl": "37c0d0aea094c7c082c99baf47b57e9a7d681bfb894a94ac56cc468c6307e3a7",
+    "data/typicality/typ-pb-pilot+sweep-olmo2-base-prefix.jsonl": "ca7c0c9236d0eabf64fc3e311d34850a7b879f24268ae7c8ee766f9398b07e80"
+  },
+  "items": 49,
+  "mean_held_out_gap": 0.17559649494819624,
+  "mean_in_sample_gap": 0.26032467294180267,
+  "pairs_per_direction": 15,
+  "per_prompt_held_out_gap": {
+    "ff-01": 0.47183243496329863,
+    "ff-03": 0.3901388828430606,
+    "ff-04": 0.28983490801886796,
+    "ff-05": -0.04078807625261166,
+    "ff-06": 0.524052082167133,
+    "ff-07": -0.012571578231292457,
+    "ff-08": -0.016473884715545006,
+    "ff-09": 0.3096540686567164,
+    "ff-10": 0.09878579078482203,
+    "ff-11": -0.17105183765044485,
+    "ff-12": 0.08814865384615389
+  },
+  "prompts": 12,
+  "prompts_positive": 7,
+  "prompts_with_pairs": 11,
+  "reading": "held-out gap in nats/token on tokens NOT used to pick the pair; the T=1.3 delta is full-story and cross-arm, so the comparison is rough",
+  "ref_tag": "olmo2-base",
+  "reference_t13_arm_delta": 0.7675955,
+  "spread_real": true,
+  "status": "FEASIBILITY_ONLY_NO_QUALITY_LABELS"
+}
