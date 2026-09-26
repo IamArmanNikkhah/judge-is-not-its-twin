@@ -1,6 +1,6 @@
 # The Judge Is Not Its Twin
 
-Code and data for *The Judge Is Not Its Twin: post-training makes a model's writing more predictable but barely moves its taste, as a judge, toward predictable writing* (Arman Nik Khah, 2026; arXiv link to follow).
+Code and data for *The Judge Is Not Its Twin: post-training makes a model's writing more predictable but barely moves its taste, as a judge, toward predictable writing* (Arman Nik Khah and Arvin Bahreini, 2026; arXiv link to follow).
 
 The paper follows two open model families, OLMo-2 and Zephyr (7B), through their public training stages. Every stage writes short stories, and every stage judges pairs of stories written by the other family. Training makes the writing more predictable. It barely moves the judges' preference for predictable stories, and it breaks "which is more creative?" as a question for trained judges.
 
